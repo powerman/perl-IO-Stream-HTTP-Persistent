@@ -58,7 +58,7 @@
    "provides" : {
       "IO::Stream::HTTP::Persistent" : {
          "file" : "lib/IO/Stream/HTTP/Persistent.pm",
-         "version" : "v0.1.0"
+         "version" : "v0.2.0"
       }
    },
    "release_status" : "stable",
@@ -73,6 +73,6 @@
          "web" : "https://github.com/powerman/perl-IO-Stream-HTTP-Persistent"
       }
    },
-   "version" : "v0.1.0"
+   "version" : "v0.2.0"
 }
 
