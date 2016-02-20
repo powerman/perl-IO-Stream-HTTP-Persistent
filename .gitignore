@@ -1,0 +1,8 @@
+/IO-Stream-HTTP-Persistent-*
+/.build
+/_build*
+/Build
+MYMETA.*
+!META.json
+/.prove
+/tmp/
