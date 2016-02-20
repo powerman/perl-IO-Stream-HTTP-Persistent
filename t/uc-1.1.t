@@ -1,7 +1,10 @@
-# Use case: HTTP/1.0: GET until EOF
 use warnings;
 use strict;
 use t::share;
+
+# Use case: HTTP/1.1: GET without EOF
+my $request = "GET / HTTP/1.1\nHost: localhost\n\n";
+my $response = "HTTP/1.1 200 OK\nContent-Length: 3\nConnection: keep-alive\n\nok\n";
 
 @CheckPoint = (
     [ 'client', HTTP_SENT,  undef   ], 'client: got HTTP_SENT',
@@ -11,12 +14,14 @@ use t::share;
 plan tests => 1 + @CheckPoint/2;
 
 
+my ($srv_w, $port) = start_server($request, $response);
+
 IO::Stream->new({
-    host        => 'www.google.com',
-    port        => 80,
+    host        => '127.0.0.1',
+    port        => $port,
     cb          => \&client,
     wait_for    => EOF|HTTP_SENT|HTTP_RECV,
-    out_buf     => "GET / HTTP/1.1\nHost: www.google.com\n\n",
+    out_buf     => $request,
     in_buf_limit=> 102400,
     plugin      => [
         http        => IO::Stream::HTTP::Persistent->new(),

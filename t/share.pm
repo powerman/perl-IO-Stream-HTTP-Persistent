@@ -118,4 +118,42 @@ sub tcp_client {
     return $sock;
 }
 
+sub start_server {
+    my ($request, $response) = @_;
+    my $srv_sock = tcp_server('127.0.0.1', 0);
+    my ($port) = sockaddr_in(getsockname($srv_sock));
+    my $srv_w = EV::io($srv_sock, EV::READ, sub {
+        if (accept my $sock, $srv_sock) {
+            IO::Stream->new({
+                fh          => $sock,
+                cb          => sub { server(@_, $request, $response) },
+                wait_for    => IN|EOF,
+                in_buf_limit=> 1024,
+            });
+        }
+        elsif ($! != EAGAIN) {
+            die "accept: $!\n";
+        }
+    });
+    return ($srv_w, $port);
+}
+
+sub server {
+    my ($io, $e, $err, $request, $response) = @_;
+    if ($err) {
+        die $err;
+    }
+    if ($e & IN) {
+        while ($io->{in_buf} =~ s/\A\Q$request\E//ms) {
+            if ($request !~ m{\A[^\n]* HTTP/1[.]1\r?\n}ms && $request !~ m{^Connection:\s*Keep-Alive\n}ms) {
+                $io->{wait_for} = SENT;
+            }
+            $io->write($response);
+        }
+    }
+    if ($e & EOF || $e & SENT) {
+        $io->close;
+    }
+}
+
 1;
