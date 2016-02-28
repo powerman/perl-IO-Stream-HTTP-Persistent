@@ -294,13 +294,11 @@ values.
 
 =head1 INTERFACE 
 
-=over
+=head2 new
 
-=item new()
+    $plugin = IO::Stream::HTTP::Persistent->new();
 
 Create and return new IO::Stream plugin object.
-
-=back
 
 
 =head1 PUBLIC FIELDS
@@ -434,7 +432,7 @@ Alex Efros E<lt>powerman@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2012 by Alex Efros E<lt>powerman@cpan.orgE<gt>.
+This software is Copyright (c) 2012- by Alex Efros E<lt>powerman@cpan.orgE<gt>.
 
 This is free software, licensed under:
 

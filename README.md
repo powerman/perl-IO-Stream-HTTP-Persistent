@@ -85,9 +85,11 @@ values.
 
 # INTERFACE 
 
-- new()
+## new
 
-    Create and return new IO::Stream plugin object.
+    $plugin = IO::Stream::HTTP::Persistent->new();
+
+Create and return new IO::Stream plugin object.
 
 # PUBLIC FIELDS
 
@@ -184,7 +186,7 @@ Alex Efros &lt;powerman@cpan.org>
 
 # COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2012 by Alex Efros &lt;powerman@cpan.org>.
+This software is Copyright (c) 2012- by Alex Efros &lt;powerman@cpan.org>.
 
 This is free software, licensed under:
 
