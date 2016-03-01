@@ -7,7 +7,7 @@ IO::Stream::HTTP::Persistent - HTTP persistent connections plugin
 
 # VERSION
 
-This document describes IO::Stream::HTTP::Persistent version v0.2.0
+This document describes IO::Stream::HTTP::Persistent version v0.2.1
 
 # SYNOPSIS
 
