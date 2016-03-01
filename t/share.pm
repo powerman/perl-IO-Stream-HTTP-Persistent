@@ -148,8 +148,9 @@ sub server {
             if ($request !~ m{\A[^\n]* HTTP/1[.]1\r?\n}ms && $request !~ m{^Connection:\s*Keep-Alive\n}ms) {
                 $io->{wait_for} = SENT;
             }
-            $io->write($response);
+            $io->{out_buf} .= $response;
         }
+        $io->write();
     }
     if ($e & EOF || $e & SENT) {
         $io->close;
