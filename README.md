@@ -7,7 +7,7 @@ IO::Stream::HTTP::Persistent - HTTP persistent connections plugin
 
 # VERSION
 
-This document describes IO::Stream::HTTP::Persistent version v0.2.1
+This document describes IO::Stream::HTTP::Persistent version v0.2.2
 
 # SYNOPSIS
 
@@ -182,11 +182,11 @@ Feel free to fork the repository and submit pull requests.
 
 # AUTHOR
 
-Alex Efros &lt;powerman@cpan.org>
+Alex Efros <powerman@cpan.org>
 
 # COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2012- by Alex Efros &lt;powerman@cpan.org>.
+This software is Copyright (c) 2012- by Alex Efros <powerman@cpan.org>.
 
 This is free software, licensed under:
 
